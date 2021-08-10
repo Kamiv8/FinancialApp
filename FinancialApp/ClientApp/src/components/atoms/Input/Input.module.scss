@@ -1,0 +1,15 @@
+@import "../../../style/abstracts/mixins";
+@import "../../../style/abstracts/variables";
+
+.main{
+
+    
+
+    @include tablet{
+        @include size()
+    }
+    
+
+
+
+}
