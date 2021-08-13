@@ -7,3 +7,4 @@ export const parameters = {
     },
   },
 }
+import '../src/style/_globalStyles.scss';

@@ -5,6 +5,7 @@ import styles from "./home.module.scss";
 import * as ErrorStore from '../../redux/reducers/errorReducer';
 import { ApplicationState } from '../../redux/reducers/rootReducer';
 import SimpleErrors from '../ErrorsBoundary/SimpleErrors';
+import Input from '../atoms/Input/Input';
 
 type HomeProps = ErrorStore.ErrorState;
 
@@ -65,6 +66,7 @@ const Home: React.FC<HomeProps> = ({isTrue,error}) => {
         <p className={styles.wrapper}>gfdsgfdsgsd</p>
       </div>
       <div>
+        <Input type="login"/>
       </div>
     </>
   );

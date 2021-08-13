@@ -1,0 +1,11 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.redirect{
+    @include fontSize($s,500,$black);
+    text-decoration: underline;
+}
+
+// .normal{
+
+// }

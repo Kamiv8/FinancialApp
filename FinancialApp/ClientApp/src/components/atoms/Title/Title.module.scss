@@ -1,0 +1,7 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.first{
+    @include fontSize($l,600,$black);
+    
+}

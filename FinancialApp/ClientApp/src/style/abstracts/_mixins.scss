@@ -5,7 +5,11 @@
     width: $width;
     height: $height;
 }
-
+@mixin fontSize($size,$weight,$color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
 
 @mixin tablet {
     @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {

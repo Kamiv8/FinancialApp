@@ -1,0 +1,18 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+
+
+.wrapper{
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    min-height: 300px;
+}
+.titleHandler {
+    justify-self: center;
+}

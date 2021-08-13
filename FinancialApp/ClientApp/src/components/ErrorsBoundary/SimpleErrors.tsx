@@ -6,16 +6,12 @@ import { Redirect } from 'react-router';
 
 type SimpleErrorsStore = ErrorStore.ErrorState;
 
-const SimpleErrors: React.FC<SimpleErrorsStore> = ({ error }) => {
+const SimpleErrors: React.FC = () => {
   return (
     <>
-      {error === 401 ? (
-        <>
-          <p>jkfhdskfdsjhfds</p>
-        </>
-      ) : null}
+      <p>siemka tu errors</p>
     </>
   );
 };
 
-export default connect((state: ApplicationState) => state.error)(SimpleErrors);
+export default (SimpleErrors);

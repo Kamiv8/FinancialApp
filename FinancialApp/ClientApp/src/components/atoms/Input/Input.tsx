@@ -1,29 +1,38 @@
-import React from "react";
-import styles from "./Input.module.scss";
-
-
+import React from 'react';
+import styles from './Input.module.scss';
 
 interface IInputProps {
+  styleType: 'login' | 'operation';
 
-    type?: 'login' | 'operation';
-
-    value?: string;
-    size: "mobile" | "tablet" | "fullscreen";
-    placeholder?: string;
+  placeholder?: string;
+  className?: string;
+  type?: string;
 }
 
+const onChange = (e: React.FormEvent) => {
+  e.preventDefault();
+};
 
+const Input: React.FC<IInputProps> = ({
+  styleType,
+  placeholder,
+  className,
+  type = 'text',
+  ...props
+}) => {
+  const mode: string = styleType === 'login' ? styles.login : styles.tablet;
+  return (
+    <>
+      <input
+        autoComplete="off"
+        onChange={onChange}
+        className={[className, mode].join(' ')}
+        placeholder={placeholder}
+        type={type}
+        {...props}
+      />
+    </>
+  );
+};
 
-
-const Input: React.FC<IInputProps> = ({type,value, placeholder,size}) => {
-
-
-    const mode: string = type === 'login' ?  `main--${type}` : `main--${type}`;
-    return(
-        <>
-          <input className={[`main--${size}`,mode].join(' ')} value={value} placeholder={placeholder} />
-        </>
-    )
-}
-
-export default (Input);
+export default Input;

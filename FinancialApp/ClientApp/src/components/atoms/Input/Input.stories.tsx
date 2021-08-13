@@ -4,7 +4,6 @@ import { ComponentStory, ComponentMeta} from '@storybook/react';
 import Input from './Input';
 
 
-
 export default {
     title: 'Atoms/Input',
     component: Input,
@@ -15,15 +14,14 @@ export default {
 const Template : ComponentStory<typeof Input> = args => <Input {...args}/>
 
 
-export const Primary = Template.bind({});
-Primary.args ={
-    type: "text",
+export const Login = Template.bind({});
+Login.args = {
     placeholder: "LOGIN"
 }
-export const Secondary = Template.bind({});
+export const Operation = Template.bind({});
 
 
-Secondary.args = {
-    type: "button",
-    value: "Log in"
+Operation.args = {
+    placeholder: "Title"
+    
 }

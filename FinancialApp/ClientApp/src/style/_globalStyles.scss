@@ -3,7 +3,7 @@
 
 
 
-*,*::after,*::before{
+:global *,*::after,*::before{
     box-sizing: border-box;
 }
 

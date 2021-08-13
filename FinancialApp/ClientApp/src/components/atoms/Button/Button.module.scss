@@ -1,0 +1,18 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+
+
+.first{
+
+    @include size(123px,30px);
+    @include fontSize($xs,600,$white);
+    text-transform: uppercase;
+    background-color: $default;
+    border: none;
+    border-radius: 20px;
+    
+}
+// .firstReverse{
+
+// }

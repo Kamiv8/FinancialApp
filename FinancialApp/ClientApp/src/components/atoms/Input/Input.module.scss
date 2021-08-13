@@ -1,15 +1,22 @@
-@import "../../../style/abstracts/mixins";
-@import "../../../style/abstracts/variables";
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
 
-.main{
-
-    
-
-    @include tablet{
-        @include size()
+.login {
+  @include size(206px, 30px);
+  background-color: $secondWhite;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  &::placeholder {
+    text-transform: uppercase;
+    @include fontSize($xs, 600, $middleGray);
+  }
+  @include tablet {
+    @include size(375px, 50px);
+    &::placeholder {
+      @include fontSize($s, 400, $middleGray);
     }
-    
-
-
-
+  }
 }
+// .operation {
+// }
