@@ -1,8 +1,11 @@
 @import '../abstracts/mixins';
-@import '../abstracts/variables';
+@import '../abstracts/variables'; 
 
 
 .errors{
     @include fontSize($s,400,$warning);
     display: block;
+    @include tablet{
+        @include fontSize($l,400,$warning);
+    }
 }

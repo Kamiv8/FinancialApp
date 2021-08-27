@@ -21,13 +21,21 @@ $warning: rgba(255,0,0,1);
 //----------------------------------------------------------------
 // FONTS
 
-$xs: 0.6rem;
+$xxs: 0.6rem;
+$xs: 1rem;
 $s: 1.3rem;
-$l: 1.7rem;
+$l: 1.6rem;
+$xxl: 3.8rem;
 
+
+//----------------------------------------------------------------
+// FONTS PARAGRAPH
+
+$middle-paragraph: 1.5rem;
 
 
 //------------------------------
 // RWD SIZES
 $tablet: 480px;
 $desktop: 1200px;
+$large-desktop: 2560px;

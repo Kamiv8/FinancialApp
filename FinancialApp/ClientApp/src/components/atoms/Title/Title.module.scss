@@ -1,7 +1,12 @@
 @import '../../../style/abstracts/mixins';
 @import '../../../style/abstracts/variables';
 
-.first{
-    @include fontSize($l,600,$black);
-    
+.first {
+  @include fontSize($l, 600, $black);
+  @include tablet {
+    @include fontSize($xxl, 600, $black);
+  }
+  @include desktop {
+    @include fontSize($xxl, 600, $black);
+  }
 }

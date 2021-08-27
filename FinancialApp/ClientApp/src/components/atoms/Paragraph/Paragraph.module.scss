@@ -2,8 +2,16 @@
 @import '../../../style/abstracts/variables';
 
 .redirect{
-    @include fontSize($s,500,$black);
+    @include fontSize($xs,500,$black);
     text-decoration: underline;
+    margin-top: 4vh;
+    @include tablet{
+        @include fontSize($middle-paragraph,500,$black);
+    }
+    @include desktop{
+        @include fontSize($l, 500,$black);
+    }
+
 }
 
 // .normal{

@@ -10,9 +10,23 @@
     border-radius: 20px;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
-    min-height: 300px;
+    padding: 10%;
+    @include size(100%,100%);
+    @include tablet{
+        max-height: 608px;
+    }
+    @include desktop{
+        max-height: 608px;
+        max-width: 550px;
+        place-self: center;
+    }
+    @include large-desktop{
+        padding: 5%;
+    }
 }
 .titleHandler {
     justify-self: center;
+}
+.padding{
+    text-align: center;
 }

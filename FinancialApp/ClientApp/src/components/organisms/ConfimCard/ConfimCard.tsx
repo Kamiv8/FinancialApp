@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Routes from '../../../utilities/Routes';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
 import Title from '../../atoms/Title/Title';
 import LoginForm from '../../molecules/LoginForm/LoginForm';
@@ -6,16 +8,35 @@ import RegisterForm from '../../molecules/RegisterForm/RegisterForm';
 import styles from './ConfimCard.module.scss';
 
 interface IConfimCardProps {
-  type: 'login' | 'register'
+  type: 'login' | 'register',
+  title: string;
+  paragraph: string;
 }
 
-const ConfimCard: React.FC<IConfimCardProps> = ({type}) => {
+const ConfimCard: React.FC<IConfimCardProps> = ({type,title,paragraph}) => {
   return (
     <>
       <div className={styles.wrapper}>
-        <Title className={styles.titleHandler}>Sign in</Title>
-        {type === 'login' ? <LoginForm /> : <RegisterForm />}
-        <Paragraph type="redirect">if you don't have an account, click here</Paragraph>
+        <Title className={styles.titleHandler}>{title}</Title>
+        {type === 'login' ? (
+          <div>
+            <LoginForm />
+            <Link to={Routes.register}>
+              <Paragraph className={styles.padding} type="redirect">
+                {paragraph}
+              </Paragraph>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <RegisterForm />
+            <Link to={Routes.login}>
+              <Paragraph className={styles.padding} type="redirect">
+                {paragraph}
+              </Paragraph>
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

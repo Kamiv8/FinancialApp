@@ -18,4 +18,5 @@ const Template: ComponentStory<typeof RegisterForm> = (args) => (
 );
 
 export const Register = Template.bind({});
-Register.args = {};
+Register.args = {
+};

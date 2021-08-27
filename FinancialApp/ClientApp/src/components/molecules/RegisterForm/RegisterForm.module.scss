@@ -4,11 +4,16 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    width: 100%;
+    :nth-child(2){
+        margin-top: 5%;
+    }
 
 }
 
 .inputPadding{
-    margin-bottom: 2%;
+    margin-bottom: 6%;
+
 }
 
 .buttonHandler {

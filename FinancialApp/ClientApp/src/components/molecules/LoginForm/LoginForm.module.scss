@@ -7,11 +7,12 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    @include size(100%,null);
 
 }
 
 .inputPadding{
-    margin-bottom: 2%;
+    margin-bottom: 6%;
 }
 .buttonHandler {
     justify-self: center;

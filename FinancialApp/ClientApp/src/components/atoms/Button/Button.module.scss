@@ -11,7 +11,10 @@
     background-color: $default;
     border: none;
     border-radius: 20px;
-    
+    @include tablet{
+        @include size(225px,47px);
+        @include fontSize($l)
+    }
 }
 // .firstReverse{
 

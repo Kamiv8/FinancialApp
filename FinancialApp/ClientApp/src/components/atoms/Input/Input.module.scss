@@ -2,7 +2,7 @@
 @import '../../../style/abstracts/variables';
 
 .login {
-  @include size(206px, 30px);
+  @include size(100%, 30px);
   background-color: $secondWhite;
   border: none;
   border-radius: 20px;
@@ -17,6 +17,13 @@
       @include fontSize($s, 400, $middleGray);
     }
   }
+  @include desktop {
+       @include size(375px, 50px);
+    &::placeholder {
+      @include fontSize($s, 400, $middleGray);
+    }
+  }
+  
 }
 // .operation {
 // }
