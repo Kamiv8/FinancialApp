@@ -50,23 +50,31 @@ namespace FinancialApp.Services
         }
         public void RegisterAccount(RegisterDto dto)
         {
-            if (dto.Password == dto.ConfimPassword)
+            if (_context.Users.FirstOrDefault(x => x.Email == dto.Email) == null)
             {
-                User user = new User()
-                {
-                    Email = dto.Email,
 
-                };
-                string hashedPassword = passwordHasher.HashPassword(user, dto.Password);
-                user.Password = hashedPassword;
-                _context.Add(user);
-                _context.SaveChanges();
+
+                if (dto.Password == dto.ConfimPassword)
+                {
+                    User user = new User()
+                    {
+                        Email = dto.Email,
+
+                    };
+                    string hashedPassword = passwordHasher.HashPassword(user, dto.Password);
+                    user.Password = hashedPassword;
+                    _context.Add(user);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    throw new BadRequestException("Your data are not correct");
+                }
             }
             else
             {
-                throw new BadRequestException("Your data are not correct");
+                throw new BadRequestException("This email is busy");
             }
-
         }
         public TokenDto Login(LoginDto dto)
         {

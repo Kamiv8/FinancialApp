@@ -1,63 +1,84 @@
-import React from 'react';
-import {  useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {LoginValidation} from '../../../validationSchema/validationSchema';
+import { LoginValidation } from '../../../validationSchema/validationSchema';
 import { connect } from 'react-redux';
 import * as UserAccount from '../../../redux/reducers/accountReducer';
 import Button from '../../atoms/Button/Button';
 import Input from '../../atoms/Input/Input';
 import errorStyle from '../../../style/globalComponents/globalComponents.module.scss';
 import styles from './LoginForm.module.scss';
+import { LoginUser } from '../../../redux/types/accountTypes';
+import { Redirect } from 'react-router';
+import { ApplicationState } from '../../../redux/reducers/rootReducer';
+import { ErrorState } from '../../../redux/reducers/errorReducer';
+import ErrorPortal from '../../../errorPortal';
 
-
-interface IComponentProps {}
-interface IFormInput {
-    email: string;
-    password: string;
+interface IComponentProps {
+  redirect?: boolean;
 }
 
+type LoginFormProps = IComponentProps &
+  typeof UserAccount.actionCreator &
+  ErrorState;
 
-
-type LoginFormProps = IComponentProps & typeof UserAccount.actionCreator;
-
-const LoginForm: React.FC<LoginFormProps> = ({login}) => {
-  const { register, handleSubmit, formState: {errors} } = useForm<IFormInput>({
-    mode: "onSubmit",
+const LoginForm: React.FC<LoginFormProps> = ({ login, redirect, error }) => {
+  const [shouldRedirect, setShouldRedirect] = useState<typeof redirect>(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginUser>({
+    mode: 'onSubmit',
     resolver: yupResolver(LoginValidation),
   });
-  const onSubmit = (data: IFormInput) => {
-    return console.log(data);
-
+  const onSubmit = (data: LoginUser) => {
+    login(data);
+    if (error !== 0) {
+      setShouldRedirect(!shouldRedirect);
+    }
+  };
+  if (shouldRedirect) {
+    return <Redirect to="/home" />;
   }
-  return (
-    <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
-      {errors && (
-        <span className={errorStyle.errors}>{errors.email?.message}</span>
-      )}
-      <Input
-        className={styles.inputPadding}
-        styleType="login"
-        {...register('email')}
-        placeholder="login"
-      />
-      {errors && (
-        <span className={errorStyle.errors}>{errors.password?.message}</span>
-      )}
-      <Input
-        className={styles.inputPadding}
-        styleType="login"
-        type="password"
-        {...register('password')}
-        placeholder="password"
-      />
 
-      <Button className={styles.buttonHandler} type="submit" version="first">
-        enter
-      </Button>
-    </form>
+  return (
+    <>
+      {error === 404 ? (
+        <ErrorPortal>Login or password is not correct</ErrorPortal>
+      ) : null}
+      <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
+        {errors && (
+          <span className={errorStyle.errors}>{errors.email?.message}</span>
+        )}
+        <Input
+          className={styles.inputPadding}
+          styleType="login"
+          {...register('email')}
+          placeholder="login"
+        />
+        {errors && (
+          <span className={errorStyle.errors}>{errors.password?.message}</span>
+        )}
+        <Input
+          className={styles.inputPadding}
+          styleType="login"
+          type="password"
+          {...register('password')}
+          placeholder="password"
+        />
+
+        <Button className={styles.buttonHandler} type="submit" version="first">
+          enter
+        </Button>
+      </form>
+    </>
   );
 };
 
-export default (LoginForm as any);
-//connect(null, UserAccount.actionCreator);
+export default connect(
+  (state: ApplicationState) => state.error,
+  UserAccount.actionCreator,
+)(LoginForm as any);
+
 // "✔️ all is good"

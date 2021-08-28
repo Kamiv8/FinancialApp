@@ -1,8 +1,9 @@
 import * as User from './accountReducer';
 import * as ErrorHandler from './errorReducer';
+import * as UserTypes from '../types/accountTypes';
 
 export interface ApplicationState {
-  user: User.AccountState | undefined;
+  user: UserTypes.AccountState | undefined;
   error: ErrorHandler.ErrorState | undefined;
 }
 

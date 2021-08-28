@@ -1,6 +1,11 @@
 import { Action, Reducer } from "redux";
+import { AppThunkAction } from "./rootReducer";
+
 export enum ErrorType {
   Unauthorized = "UNAUTHORIZED_TYPE",
+  NotFound = 'NOT_FOUND',
+  Default = 'DEFAULT_STATE',
+  
 }
 
 export interface ErrorState{
@@ -12,6 +17,12 @@ export interface HandleError{
   type: ErrorType;
   error: string;
 }
+
+export const actionCreator = {
+  closeError: (): AppThunkAction<HandleError> => (dispatch) => {
+    dispatch({type: ErrorType.Default, error: '0'});
+  },
+}; 
 
 type ActionType = HandleError;
 
@@ -30,6 +41,16 @@ export const reducer: Reducer<ErrorState> = (state: ErrorState | undefined, inco
             return {
               error: +action.error,
               isTrue: true,
+            }
+          case ErrorType.NotFound:
+            return{
+              error: +action.error,
+              isTrue: true
+            }
+          case ErrorType.Default:
+            return {
+              error: 0,
+              isTrue: false
             }
         default: 
             return state;
