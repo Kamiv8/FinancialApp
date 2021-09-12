@@ -1,5 +1,6 @@
 ﻿using Database.DataAccess;
 using Database.Entities;
+using FinancialApp.ModelsDto;
 using FinancialApp.ModelsDTO;
 using FinancialApp.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -49,6 +50,14 @@ namespace FinancialApp.Controllers
         public ActionResult<IEnumerable<Operation>> GetAll()
         {
             var operations = _service.GetAll();
+            return Ok(operations);
+        }
+        [HttpGet]
+        [Route("getTen")]
+        public ActionResult<IEnumerable<OperationDto>> GetTenOperation()
+        {
+            var operations = _service.GetTenOperations();
+
             return Ok(operations);
         }
 

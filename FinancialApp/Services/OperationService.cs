@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Database.DataAccess;
 using Database.Entities;
+using FinancialApp.ModelsDto;
 using FinancialApp.ModelsDTO;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace FinancialApp.Services
         IEnumerable<Operation> GetAll();
         void RenameOperation(RenameDto dto, int id);
         IEnumerable<Operation> Sort(SortByDto dto);
+        IEnumerable<OperationDto> GetTenOperations();
 
     }
     public class OperationService : IOperationService
@@ -74,6 +76,14 @@ namespace FinancialApp.Services
             }
 
             return operationList;
+        }
+        public IEnumerable<OperationDto> GetTenOperations()
+        {
+            List<Operation> operationList = _context.Operations.Where(x => x.UserId == _userContext.GetUserId).OrderBy(x => x.Id).ToList();
+            operationList.Reverse();
+            var currentList = operationList.Take(10).ToList();
+            var op = _mapper.Map<List<OperationDto>>(currentList);
+            return op;
         }
 
         // Rename title or | description

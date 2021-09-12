@@ -1,3 +1,4 @@
+import '../src/style/_globalStyles.scss';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -7,7 +8,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'default',
+    default: 'gray',
     values: [
       {
         name: 'default',
@@ -19,10 +20,9 @@ export const parameters = {
       },
       {
         name: 'gray',
-        value: '818181'
+        value: '#818181'
       }
 
     ],
   },
 };
-import '../src/style/_globalStyles.scss';
