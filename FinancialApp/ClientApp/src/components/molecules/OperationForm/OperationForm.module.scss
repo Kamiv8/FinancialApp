@@ -1,0 +1,48 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.wrapperForm {
+  height: 70%;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7%;
+  box-shadow: 10px 10px 40px 0 $blackOp;
+  @include desktop {
+      box-shadow: none;
+      border: 2px solid $middleGray;
+
+  }
+}
+.spanWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modeSpan {
+  @include fontSize($xl, 700, $white);
+  @include size(50%, 40px);
+  box-shadow: 20px -20px 20px 0 $blackOp;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $default;
+  border-radius: 20px 20px 0 0;
+  cursor: pointer;
+  @include tablet {
+    @include size(30%, 40px);
+}
+@include desktop {
+      box-shadow: none;
+      border: 2px solid $middleGray;
+      border-bottom: none;
+
+
+  }
+}
+.focusType {
+  background-color: $white;
+  color: $default;
+}

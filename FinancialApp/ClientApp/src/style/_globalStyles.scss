@@ -9,6 +9,7 @@
 
 html{
     font-size: 62.5%;
+    overflow: hidden;
 }
 
 body{
@@ -17,5 +18,8 @@ body{
     background-color:rgba(108,99,255,1);
     margin: 0;
     padding: 0;
+    a {
+        text-decoration: none;
+    }
 }
 

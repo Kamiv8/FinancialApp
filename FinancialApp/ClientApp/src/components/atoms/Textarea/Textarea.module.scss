@@ -1,0 +1,14 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.textarea {
+  @include size(100%,50px);
+  border: none;
+  border-bottom: 2px solid $default;
+  
+  &::placeholder {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    @include fontSize($s, 700, $lightGray);
+  }
+}

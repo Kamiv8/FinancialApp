@@ -1,0 +1,45 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.wrapper{
+    @include size(100vw,100vh);
+    background-color: $default;
+    padding: 5vh 9vw;
+    display: grid;
+    grid-template-rows: 10vh 80vh;
+}
+.content{
+    padding-top: 2.5vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5vh;
+    @include tablet{
+        max-width: 550px;
+        padding: 0;
+        gap: 3%;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    @include desktop{
+        display: grid;
+        grid-template-columns: repeat(2,1fr );
+        align-items: center;
+        gap: 10vw;
+
+    }
+
+}
+.logo{
+    color: $white;
+    justify-self: start;
+    @include tablet{
+        @include size(135px,135px);
+    }
+}
+.pictureWrapper{
+   background-image: url("../../../assets/images/human_profile.svg");
+   @include size(100%,100%);
+   background-repeat: no-repeat;
+   background-position: center;
+}

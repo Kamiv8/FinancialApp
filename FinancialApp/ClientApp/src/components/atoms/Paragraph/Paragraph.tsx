@@ -16,13 +16,3 @@ const Paragraph: React.FC<IParagraphProps> = ({children,type,className,...props}
 };
 
 export default Paragraph;
-//   <p className={[mode].join(' ')}>{children}</p>;
-      // {
-      //   type === 'redirect' ? (
-      //     <Redirect to="/login">
-      //       <p className={[className, mode].join(' ')}>{children}</p>
-      //     </Redirect>
-      //   ) : (
-      //     <p className={[className, mode].join(' ')}>{children}</p>
-      //   );
-      // }

@@ -7,12 +7,14 @@
 
 $default: rgba(108,99,255,1);
 $white: rgba(255,255,255,1);
+$whiteOp: rgba(255,255,255,.5);
 $secondWhite: rgba(216,216,216,1);
 $lightGray: rgba(213,213,213,1);
 $middleGray: rgba(129,129,129,1);
 $pink: rgba(255,101,132,1);
 $green: rgba(101,222,72,1);
 $black: rgba(0,0,0,1);
+$blackOp: rgba(0,0,0,.5);
 $warning: rgba(255,0,0,1);
 $warningBackground: rgba(112,112,112,.8);
 
@@ -26,13 +28,16 @@ $xxs: 0.6rem;
 $xs: 1rem;
 $s: 1.3rem;
 $l: 1.6rem;
+$xl: 2rem;
 $xxl: 3.8rem;
+$xxxl: 4rem;
 
 
 //----------------------------------------------------------------
 // FONTS PARAGRAPH
 
 $middle-paragraph: 1.5rem;
+$currentMoney: 3rem;
 
 
 //------------------------------

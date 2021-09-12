@@ -12,6 +12,8 @@ import { RegisterUser } from '../../../redux/types/accountTypes';
 import { ApplicationState } from '../../../redux/reducers/rootReducer';
 import ErrorPortal from '../../../errorPortal';
 import { ErrorState } from '../../../redux/reducers/errorReducer';
+import { useState } from 'react';
+import PromiseResultModal from '../PromiseResultModal/PromiseResultModal';
 
 
 
@@ -19,19 +21,21 @@ interface IRegisterFormProps {}
 
 type RegisterFormProps = IRegisterFormProps & typeof UserAccount.actionCreator & ErrorState;
 
-const RegisterForm: React.FC<RegisterFormProps> = ({registerAccount,error}) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({registerAccount,isTrue,error}) => {
+  const[onClickSubmit,setOnClickSubmit] = useState<boolean>(false);
   const {register,handleSubmit, formState: {errors}} = useForm<RegisterUser>({
     mode: 'onSubmit',
     resolver: yupResolver(RegisterValidation)
   });
   const onSubmit = (data: RegisterUser): void => {
     registerAccount(data);
+    setOnClickSubmit(!onClickSubmit);
   };
   return (
     <>
-      {error === 400 ? (
-        <ErrorPortal>Email is busy</ErrorPortal>
-      ) : null}
+      {isTrue  ? (
+        <ErrorPortal><PromiseResultModal done>This email is busy</PromiseResultModal></ErrorPortal>
+      ) : error === 200 ? <ErrorPortal ><PromiseResultModal>Welcome!!!</PromiseResultModal></ErrorPortal> : null}
       <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
         {errors && (
           <span className={errorStyle.errors}>{errors.email?.message}</span>

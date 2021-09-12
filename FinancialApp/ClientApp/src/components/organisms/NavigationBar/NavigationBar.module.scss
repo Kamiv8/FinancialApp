@@ -1,0 +1,52 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.wrapper {
+  @include size(80vw, 100vh);
+  background-color: $default;
+  padding: 5vh 5vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(90vw);
+  grid-template-rows: 1fr 8fr 1fr;
+  box-shadow: -20px 0 20px $blackOp;
+  display: none;
+  @include tablet{
+      @include size(65vw,100vh);
+  }
+  @include desktop{
+    display: none;
+  }
+}
+.activeClass {
+      transform: translateX(0);
+      display: grid;
+}
+
+
+.userPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profileImage {
+  @include size(37px, 37px);
+  border: 1px solid $middleGray;
+  border-radius: 50%;
+  background-color: $white;
+  @include tablet{
+    @include size(103px,103px);
+
+  }
+}
+.logout {
+    place-self: end;
+    @include tablet{
+      @include size(65px,65px);
+    }
+}
+.cancel{
+    fill: $white;
+
+}

@@ -20,7 +20,7 @@ const Input: React.FC<IInputProps> = ({
   type = 'text',
   ...props
 }) => {
-  const mode: string = styleType === 'login' ? styles.login : styles.tablet;
+  const mode: string = styleType === 'login' ? styles.login : styles.operation;
   return (
     <>
       <input

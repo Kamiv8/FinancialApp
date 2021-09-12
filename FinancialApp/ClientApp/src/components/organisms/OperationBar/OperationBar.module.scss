@@ -1,0 +1,40 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.wrapper {
+  @include size(100vw, 70vh);
+  background-color: $default;
+  box-shadow: 0 -20px 20px $middleGray;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  position: absolute;
+  bottom: 0;
+}
+.header {
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+.title {
+  @include fontSize($currentMoney, 700, $white);
+  place-self: center;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  @include tablet {
+    font-size: $xxxl;
+  }
+}
+
+.cancel {
+  fill: $white;
+  place-self: center;
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+}

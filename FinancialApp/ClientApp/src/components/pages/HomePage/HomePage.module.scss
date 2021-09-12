@@ -1,0 +1,53 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+
+
+.mainWrapper{
+    display: grid;
+    grid-template-rows: 4fr 9fr 1fr;
+    gap: 2vh;
+    grid-template-columns: 1fr;
+    @include desktop {
+        grid-template-rows: 4fr 10fr;
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+
+.sectionWrapper{
+    width: 100%;
+}
+
+
+.chart{
+    @extend .sectionWrapper;
+    @include desktop {
+        grid-column: 1/2;
+    }
+}
+.status {
+    @extend .sectionWrapper;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttonWrapper{
+    @extend .sectionWrapper;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    @include desktop {
+        display: none;
+    }
+
+}
+.aside {
+    display: none;
+    @include desktop{
+        display: block;
+        grid-row: 1/-1;
+        grid-column: 2/3;
+    }
+}

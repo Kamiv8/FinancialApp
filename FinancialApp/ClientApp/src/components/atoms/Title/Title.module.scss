@@ -10,3 +10,20 @@
     @include fontSize($xxl, 600, $black);
   }
 }
+
+.whiteStyle {
+  letter-spacing: 1px;
+  @include fontSize($l, 700, $white);
+  @include tablet{
+    @include fontSize($middle-paragraph * 2, 700, $white);
+  }
+}
+
+
+.secondTitle {
+  @include fontSize($xl,600,$middleGray);
+}
+
+.currentMoney{
+  @include fontSize($currentMoney,700, $black);
+}

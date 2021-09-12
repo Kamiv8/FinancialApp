@@ -17,6 +17,15 @@
         @include fontSize($l)
     }
 }
-// .firstReverse{
+.firstReverse{
 
-// }
+    @extend .first;
+    background: none;
+    border: 1px solid $default;
+    color: $default;
+    &:hover{
+        color: $white;
+        background-color: $default;
+    }
+
+}

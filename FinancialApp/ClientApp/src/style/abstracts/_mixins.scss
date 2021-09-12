@@ -29,3 +29,12 @@
         @content; 
     }
 }
+@mixin OpenCloseAnimation($name) {
+    @-webkit-keyframes #{name}{
+        
+        @content;
+    }
+    @keyframes #{name}{
+        @content;
+    }
+}

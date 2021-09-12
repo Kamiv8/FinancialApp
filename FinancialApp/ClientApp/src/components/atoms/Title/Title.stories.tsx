@@ -16,3 +16,9 @@ export const Login = Template.bind({});
 Login.args = {
   children: "Sign in",
 };
+
+export const UserTitle = Template.bind({});
+UserTitle.args = {
+  children: "Roland loko",
+  whiteStyle: true,
+}

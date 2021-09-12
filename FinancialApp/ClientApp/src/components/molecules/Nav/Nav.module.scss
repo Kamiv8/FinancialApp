@@ -1,0 +1,48 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+.navWrapper {
+  justify-content: start;
+  align-self: center;
+}
+
+.listContainer {
+  list-style: none;
+  width: 70%;
+  padding: 0;
+  @include desktop {
+    margin: auto;
+  }
+}
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5vh;
+  padding-left: 20px;
+}
+
+.listItem {
+  @include desktop {
+    width: 90%;
+    &:hover {
+      background-color: $whiteOp;
+      border-radius: 20px;
+    }
+  }
+}
+.icon {
+  @include size(33px, 33px);
+  @include tablet {
+    @include size(63px, 63px);
+  }
+}
+.activeTab {
+  background-color: $whiteOp;
+  padding: 0 20px;
+  border-radius: 20px;
+  width: 100%;
+}
+.name {
+  padding-left: 20px;
+}

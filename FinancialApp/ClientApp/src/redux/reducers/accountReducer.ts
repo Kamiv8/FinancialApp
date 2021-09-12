@@ -34,15 +34,18 @@ export const actionCreator = {
           type: accountType.TypeAction.userToken,
           payload: response.data,
         });
+        dispatch({ type: ErrorType.Success, error: '200'})
+        
       }
     } catch (err: any) {
       dispatch({ type: ErrorType.NotFound, error: '404' });
     }
   },
-  logout: (): AppThunkAction<KnownAction> => async (dispatch) => {
+  logout: (history: any): AppThunkAction<KnownAction> => async (dispatch) => {
     if (localStorage.getItem('token') !== null) {
       await localStorage.removeItem('token');
       dispatch({ type: accountType.TypeAction.logoutUser });
+     history.push('/');
     }
   },
   registerAccount: ({
@@ -60,7 +63,10 @@ export const actionCreator = {
         confimPassword,
       });
       if (response.status !== 200) {
-        throw new Error(response.status.toString());
+        throw new Error('400');
+      }
+      if(response.status === 200){
+        dispatch({ type: ErrorType.Created, error: '200'})
       }
     } catch (err: any) {
       dispatch({ type: ErrorType.NotFound, error: err.message });
@@ -85,7 +91,7 @@ export const actionCreator = {
         throw new Error(response.status.toString());
       }
     } catch (err: any) {
-      dispatch({ type: ErrorType.Unauthorized, error: err.message });
+      dispatch({ type: ErrorType.Unauthorized, error: '401' });
     }
   },
 };
@@ -110,7 +116,7 @@ export const reducer: Reducer<accountType.AccountState> = (
     case accountType.TypeAction.userToken:
       return {
         ...state,
-        token: '',
+        token: action.payload.token,
       };
     case accountType.TypeAction.userData:
       return {
@@ -120,7 +126,13 @@ export const reducer: Reducer<accountType.AccountState> = (
         username: action.payload.username,
         roleName: action.payload.roleName,
         RoleId: action.payload.RoleId,
+        token: localStorage.getItem('token')?.toString()
       };
+      case accountType.TypeAction.logoutUser:
+        return {
+          ...state,
+          token: ''
+        }
     default:
       return state;
   }

@@ -1,0 +1,32 @@
+@import '../../../style/abstracts/mixins';
+@import '../../../style/abstracts/variables';
+
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    height: 100%;
+    align-self: center;
+    border-left: 2px solid $middleGray;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logout {
+    @include size(50px,50px);
+    fill: $black;
+}
+.userIcon {
+    @include size(70px,70px);
+    border: 2px solid $middleGray;
+    border-radius: 50%;
+
+}
+.title {
+    align-self: center;
+}

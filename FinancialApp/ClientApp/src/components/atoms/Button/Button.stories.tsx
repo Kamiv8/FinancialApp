@@ -16,3 +16,7 @@ First.args = {
   type: 'first'
 };
 
+export const Reverse = Template.bind({});
+Reverse.args = {
+  children: 'Add operation',
+}

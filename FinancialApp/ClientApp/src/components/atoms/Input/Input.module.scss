@@ -25,5 +25,14 @@
   }
   
 }
-// .operation {
-// }
+.operation {
+  background: none;
+  border: none;
+  border-bottom: 2px solid $default;
+  @include size(100%,25px);
+  &::placeholder {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    @include fontSize($s,700, $lightGray);
+  }
+}

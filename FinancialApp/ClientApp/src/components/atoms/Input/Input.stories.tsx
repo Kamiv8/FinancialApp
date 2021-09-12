@@ -22,6 +22,7 @@ export const Operation = Template.bind({});
 
 
 Operation.args = {
-    placeholder: "Title"
+    placeholder: "Title",
+    styleType: 'operation'
     
 }

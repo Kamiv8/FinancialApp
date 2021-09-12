@@ -5,6 +5,8 @@ export enum ErrorType {
   Unauthorized = "UNAUTHORIZED_TYPE",
   NotFound = 'NOT_FOUND',
   Default = 'DEFAULT_STATE',
+  Created = 'CREATED',
+  Success = 'SUCCESS',
   
 }
 
@@ -52,6 +54,16 @@ export const reducer: Reducer<ErrorState> = (state: ErrorState | undefined, inco
               error: 0,
               isTrue: false
             }
+            case ErrorType.Created:
+              return {
+                error: +action.error,
+                isTrue: false
+              }
+              case ErrorType.Success:
+                return {
+                  error: +action.error,
+                  isTrue: false
+                }
         default: 
             return state;
     }

@@ -13,17 +13,18 @@ import { Redirect } from 'react-router';
 import { ApplicationState } from '../../../redux/reducers/rootReducer';
 import { ErrorState } from '../../../redux/reducers/errorReducer';
 import ErrorPortal from '../../../errorPortal';
-
+import PromiseResultModal from '../PromiseResultModal/PromiseResultModal';
+import {AccountState} from '../../../redux/types/accountTypes';
 interface IComponentProps {
   redirect?: boolean;
 }
 
 type LoginFormProps = IComponentProps &
   typeof UserAccount.actionCreator &
-  ErrorState;
+  ErrorState & AccountState;
 
-const LoginForm: React.FC<LoginFormProps> = ({ login, redirect, error }) => {
-  const [shouldRedirect, setShouldRedirect] = useState<typeof redirect>(false);
+const LoginForm: React.FC<LoginFormProps> = ({ login, redirect, error,isTrue}) => {
+  //const [shouldRedirect, setShouldRedirect] = useState<typeof redirect>(false);
   const {
     register,
     handleSubmit,
@@ -34,18 +35,18 @@ const LoginForm: React.FC<LoginFormProps> = ({ login, redirect, error }) => {
   });
   const onSubmit = (data: LoginUser) => {
     login(data);
-    if (error !== 0) {
-      setShouldRedirect(!shouldRedirect);
-    }
-  };
-  if (shouldRedirect) {
-    return <Redirect to="/home" />;
   }
 
   return (
     <>
       {error === 404 ? (
-        <ErrorPortal>Login or password is not correct</ErrorPortal>
+        <ErrorPortal>
+          <PromiseResultModal done>
+            Login or password is not correct
+          </PromiseResultModal>
+        </ErrorPortal>
+      ) : error === 200 ? (
+        <Redirect to="/home" />
       ) : null}
       <form className={styles.wrapper} onSubmit={handleSubmit(onSubmit)}>
         {errors && (
@@ -82,3 +83,4 @@ export default connect(
 )(LoginForm as any);
 
 // "✔️ all is good"
+//
